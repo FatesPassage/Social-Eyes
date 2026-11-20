@@ -8,7 +8,7 @@ import { ActivityIndicator, Text } from 'react-native';
 
 const icons = {
   index: ['compass-outline', 'compass'],
-  radar: ['radio-outline', 'radio'],
+  radar: ['location-outline', 'location'],
   eyes: ['eye-outline', 'eye'],
   profile: ['person-circle-outline', 'person-circle'],
 } as const;
@@ -44,7 +44,7 @@ export default function TabLayout() {
       },
     })}>
       <Tabs.Screen name="index" options={{ title: 'Discover' }} />
-      <Tabs.Screen name="radar" options={{ title: 'Radar' }} />
+      <Tabs.Screen name="radar" options={{ title: 'Check in' }} />
       <Tabs.Screen name="eyes" options={{ title: 'Eyes' }} />
       <Tabs.Screen name="profile" options={{ title: 'Me' }} />
     </Tabs>

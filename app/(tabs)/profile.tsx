@@ -15,7 +15,7 @@ export default function ProfileScreen() {
       <View style={styles.profile}>
         <View style={styles.avatar}><Ionicons name="person" size={42} color={theme.colors.cyan} /></View>
         <Text style={styles.name}>Your profile</Text>
-        <Text style={styles.copy}>Your profile stays private until you choose to participate at a venue.</Text>
+        <Text style={styles.copy}>Your profile details are private by default. Venue visibility requires a separate, explicit check-in.</Text>
       </View>
       <AccountPanel />
       <Panel>
@@ -33,7 +33,7 @@ export default function ProfileScreen() {
       </Panel>
       <Panel>
         <Text style={styles.title}>Service connection</Text>
-        <Text style={styles.copy}>{backendStatus === 'unconfigured' ? 'Backend not configured. Live features remain unavailable.' : backendStatus === 'checking' ? 'Checking backend reachability…' : backendStatus === 'reachable' ? 'Backend reachable. Sign-in and private profile storage are configured; live account and device verification is still pending.' : backendStatus === 'paused' ? 'Connection status paused while the app is inactive. It will refresh when you return.' : 'Backend unreachable. Check your connection or project configuration.'}</Text>
+        <Text style={styles.copy}>{backendStatus === 'unconfigured' ? 'Backend not configured. Live features remain unavailable.' : backendStatus === 'checking' ? 'Checking backend reachability…' : backendStatus === 'reachable' ? 'Authentication endpoint reachable. Account sign-in, database permissions, and profile persistence still require live verification.' : backendStatus === 'paused' ? 'Connection status paused while the app is inactive. It will refresh when you return.' : 'Backend unreachable. Check your connection or project configuration.'}</Text>
         <Pressable accessibilityRole="button" accessibilityLabel="Check service connection again" disabled={backendStatus === 'checking' || backendStatus === 'paused'} accessibilityState={{ disabled: backendStatus === 'checking' || backendStatus === 'paused' }} onPress={() => void refreshBackend()} style={styles.button}><Text style={styles.buttonText}>Check connection again</Text></Pressable>
       </Panel>
       <Panel><Text style={styles.title}>Your control matters</Text><Text style={styles.copy}>Your preferences are stored on this device. They do not publish your location or create a live check-in.</Text></Panel>
@@ -46,9 +46,9 @@ function Setting({ label, detail, value, disabled, onChange }: { label: string; 
 }
 
 const styles = StyleSheet.create({
-  profile: { alignItems: 'center', paddingVertical: 22, gap: 9 },
-  avatar: { width: 104, height: 104, borderRadius: 34, borderWidth: 1, borderColor: '#3D5D7D', backgroundColor: '#15263A', alignItems: 'center', justifyContent: 'center' },
-  name: { color: theme.colors.text, fontSize: 22, fontWeight: '900' },
+  profile: { alignItems: 'center', paddingVertical: 16, gap: 8 },
+  avatar: { width: 92, height: 92, borderRadius: 30, borderWidth: 1, borderColor: '#426C89', backgroundColor: '#163046', alignItems: 'center', justifyContent: 'center' },
+  name: { color: theme.colors.text, fontSize: 22, fontWeight: '900', letterSpacing: -0.4 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 4 },
   rowTitle: { color: theme.colors.text, fontSize: 14, fontWeight: '800' },
   copy: { color: theme.colors.muted, fontSize: 12, lineHeight: 19, textAlign: 'left' },

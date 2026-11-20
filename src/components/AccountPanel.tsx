@@ -121,7 +121,7 @@ export function AccountPanel() {
     if (!session || requestInFlight.current || profileLoading || profileError) return;
     // Use the same Unicode-aware constraints as the persistence layer.
     try { validateProfileDraft({ display_name: displayName, bio, intent }); }
-    catch { setMessage('Display name must be 2–40 characters and bio at most 280 characters.'); return; }
+    catch { setMessage('Use a 2–40 character display name and a bio of up to 280 characters. Control characters are not allowed.'); return; }
     requestInFlight.current = true;
     const generation = accountGeneration.current;
     setBusy(true); setMessage(null);
@@ -130,7 +130,7 @@ export function AccountPanel() {
       await saveMyProfile({ id: session.user.id, ...snapshot });
       if (generation === accountGeneration.current) { setSavedProfile(snapshot); setDisplayName(snapshot.display_name); setBio(snapshot.bio); setProfileExists(true); }
       if (generation === accountGeneration.current) setMessage('Profile saved. You are not visible at any venue until you explicitly check in.');
-    } catch { if (generation === accountGeneration.current) setMessage('Could not save your profile. Confirm the database migration is installed.'); }
+    } catch { if (generation === accountGeneration.current) setMessage('Profile could not be saved and verified. Check your connection or account permissions, then retry.'); }
     finally { if (generation === accountGeneration.current) { setBusy(false); requestInFlight.current = false; } }
   };
   const performSignOut = async () => {

@@ -9,23 +9,23 @@ import { isBackendConfigured } from '@/lib/supabase';
 export default function DiscoverScreen() {
   return (
     <Screen>
-      <BrandHeader eyebrow="Discover tonight" />
+      <BrandHeader eyebrow="Discover venues" />
       <View style={styles.hero}>
-        <Text style={styles.kicker}>SEE BEFORE YOU GO</Text>
-        <Text style={styles.title}>Where's the{ '\n' }energy?</Text>
-        <Text style={styles.subtitle}>Find participating places, discover who's around, and make your next night out more social.</Text>
+        <Text style={styles.kicker}>DISCOVER REAL PLACES</Text>
+        <Text style={styles.title}>Find your{ '\n' }people.</Text>
+        <Text style={styles.subtitle}>Explore participating venues. Choose when to check in and meet people who opted in too.</Text>
       </View>
       <View style={styles.status}><View style={styles.dot} /><Text style={styles.statusText}>{isBackendConfigured ? 'Backend credentials configured · live connection not yet verified' : 'Development preview · backend not connected'}</Text></View>
       <Panel>
         <View style={styles.panelTop}>
           <View style={styles.iconCircle}><Ionicons name="map-outline" size={21} color={theme.colors.cyan} /></View>
           <View style={{ flex: 1, gap: 3 }}>
-            <Text style={styles.panelTitle}>Your nearby scene</Text>
-            <Text style={styles.body}>Venue discovery is being connected.</Text>
+            <Text style={styles.panelTitle}>Participating venues</Text>
+            <Text style={styles.body}>Venue listings aren't connected yet.</Text>
           </View>
           <Text style={styles.soon}>NEXT</Text>
         </View>
-        <Text style={styles.body}>Once venue data and live presence are verified, this area will show participating venues, useful details and real activity. No fabricated crowd counts.</Text>
+        <Text style={styles.body}>Real venue listings will appear here once venue data is connected and verified. We never invent venues, attendees or crowd counts.</Text>
       </Panel>
       <Panel>
         <Text style={styles.panelTitle}>How Social Eyes works</Text>
@@ -42,15 +42,15 @@ function Feature({ icon, title, description }: { icon: keyof typeof Ionicons.gly
 }
 
 const styles = StyleSheet.create({
-  hero: { paddingTop: 18, paddingBottom: 6, gap: 9 },
+  hero: { paddingTop: 16, paddingBottom: 8, gap: 10 },
   kicker: { color: theme.colors.cyan, fontSize: 10, fontWeight: '900', letterSpacing: 2 },
-  title: { color: theme.colors.text, fontSize: 43, lineHeight: 46, letterSpacing: -2.2, fontWeight: '900' },
+  title: { color: theme.colors.text, fontSize: 42, lineHeight: 47, letterSpacing: -1.9, fontWeight: '900' },
   subtitle: { color: theme.colors.muted, fontSize: 14, lineHeight: 21, maxWidth: 340 },
   status: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 4 },
   dot: { width: 7, height: 7, borderRadius: 4, backgroundColor: theme.colors.gold },
   statusText: { color: theme.colors.muted, fontSize: 11, fontWeight: '700' },
   panelTop: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  iconCircle: { width: 42, height: 42, borderRadius: 14, backgroundColor: '#13283A', alignItems: 'center', justifyContent: 'center' },
+  iconCircle: { width: 44, height: 44, borderRadius: 15, backgroundColor: '#153447', alignItems: 'center', justifyContent: 'center' },
   panelTitle: { color: theme.colors.text, fontSize: 16, fontWeight: '800' },
   body: { color: theme.colors.muted, fontSize: 12, lineHeight: 18 },
   soon: { color: theme.colors.cyan, fontSize: 9, fontWeight: '900', letterSpacing: 1.4 },

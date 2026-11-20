@@ -5,7 +5,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 const root = path.resolve(import.meta.dirname, '..');
 let src = fs.readFileSync(path.join(root, 'src/lib/profileValidation.ts'), 'utf8');
-src = src.replace(/^import type .*\n/gm, '').replace(/^const VALID_INTENTS: ReadonlySet<string>/m, 'const VALID_INTENTS')
+src = src.replace(/^export type .*\n/gm, '').replace(/^import type .*\n/gm, '').replace(/^const VALID_INTENTS: ReadonlySet<string>/m, 'const VALID_INTENTS')
   .replace('export function validateProfileDraft(input: unknown): Omit<PublicProfile, \'id\'>', 'function validateProfileDraft(input)')
   .replaceAll('input as Record<string, unknown>', 'input').replace('draft.intent as SocialIntent', 'draft.intent')
   .replace('export function validateProfileRecord(input: unknown, expectedUserId: string): PublicProfile', 'function validateProfileRecord(input, expectedUserId)');
